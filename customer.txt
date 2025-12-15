@@ -1,1 +1,8 @@
-sdfsd34
+Name: Sarinah 
+Age: 19
+Name: xyz 
+Age: 20
+Name: abxc 
+Age: 24
+Name: abc 
+Age: 12
