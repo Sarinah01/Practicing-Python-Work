@@ -1,0 +1,13 @@
+-----Ouptut through write/read method----- 
+VISHAL IS BEST IN PYTHON B2,B7 AND D1 ARE BEST IN PYTHON
+HII 
+HELLOO
+1234-----Ouptut through write/readlines method-----
+['vishal is best in python B2,B7 and D1 are best in python\n', 'Hii \n', 'Helloo\n', '1234']-----Ouptut through write/readline method-----
+VISHAL IS BEST IN PYTHON B2,B7 AND D1 ARE BEST IN PYTHON
+---output of readlines---
+vishal is best in python B2,B7 and D1 are best in python
+Hii 
+Helloo
+1234
+Checking what's happening--12345678
