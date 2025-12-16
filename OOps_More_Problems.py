@@ -1,96 +1,97 @@
 # # You own a pizzeria named Olly’s Pizzas and want to create a Python program
 # # to handle the customers and revenue. 
 # # Create the following classes with the following methods:
-# class InvalidToppings(Exception):
-#     pass
-# class InvalidCheese(Exception):
-#     pass
-# class Pizza:
+class InvalidToppings(Exception):
+    pass
+class InvalidCheese(Exception):
+    pass
+class Pizza:
     
     
-#     def __init__(self, size , toppings, cheese):
-#         self.size = size
-#         self.toppings =  toppings
-#         self.cheese= cheese
-#         print(self.size , self.toppings, self.cheese)
-#     def price(self):
-#         self.bill = self.sizing = self.tops = self.chprice = 0
-#         if self.size == "s":
-#             self.sizing +=50
-#         elif self.size=="m":
-#             self.sizing+=100
-#         else:
-#             self.sizing +=200
+    def __init__(self, size , toppings, cheese):
+        self.size = size
+        self.toppings =  toppings
+        self.cheese= cheese
+        print(self.size , self.toppings, self.cheese)
+    def price(self):
+        self.bill = self.sizing = self.tops = self.chprice = 0
+        if self.size == "s":
+            self.sizing +=50
+        elif self.size=="m":
+            self.sizing+=100
+        else:
+            self.sizing +=200
 
-#         for temp in self.toppings:
-#             if temp not in ["brocolli" , "olives","mushrooms"]:
-#                 self.tops += 70
-#             else:
-#                 self.tops+=50
+        for temp in self.toppings:
+            if temp not in ["brocolli" , "olives","mushrooms"]:
+                self.tops += 20
+            else:
+                self.tops+=50
         
-#         self.chprice += 50 * len(self.cheese)
+        self.chprice += 50 * len(self.cheese)
             
-#         self.bill = self.sizing + self.tops + self.chprice
-#         print(f"Cheese price {self.chprice} , Toppings {self.tops} , Size {self.sizing}")
-#         print("The total bill is: ", self.bill)
-#         return self.bill   
+        self.bill = self.sizing + self.tops + self.chprice
+        print(f"Cheese price {self.chprice} , Toppings {self.tops} , Size {self.sizing}")
+        print("The total bill is: ", self.bill)
+        return self.bill   
 
-# class Order:
-#     customerid = 0
-#     def __init__(self, name):
-#         self.name = name
-#         self.customerid +=1
-#     def order(self):
-#         self.pizzas = []        
-#         number = int(input("Ennter the nos. of pizzas u want to buy? "))
-#         for i in range(number):
-#             tops = []
-#             cheese = []
-#             size = input(f"Enter the size for pizza {i+1} : ")
-#             ntoppings = int(input("Enter the nos of toppings u want to add? "))
+class Order:
+    customerid = 0
+    def __init__(self, name):
+        self.name = name
+        Order.customerid +=1
+        self.customerid = Order.customerid
+    def order(self):
+        self.pizzas = []        
+        number = int(input("Ennter the nos. of pizzas u want to buy? "))
+        for i in range(number):
+            tops = []
+            cheese = []
+            size = input(f"Enter the size for pizza {i+1} : ")
+            ntoppings = int(input("Enter the nos of toppings u want to add? "))
    
-#             for j in range(ntoppings):
-#                while True:
-#                    try :
-#                         topping = input(f"Enter the [{j+1}] toppings for pizza {i+1} : ")
-#                         if topping not in ['corn', 'tomato', 'onion','capsicum','mushroom', 'olives', 'broccoli']:
-#                             raise InvalidToppings("Invalid Topping selected! ")
-#                         else:
-#                               tops.append(topping)
-#                               break
-#                    except InvalidToppings as e:
-#                         print("Enter properly: ", e)                
-#             ncheese = int(input("Enter the nos of cheese u want to add? "))
+            for j in range(ntoppings):
+               while True:
+                   try :
+                        topping = input(f"Enter the [{j+1}] toppings for pizza {i+1} : ")
+                        if topping not in ['corn', 'tomato', 'onion','capsicum','mushroom', 'olives', 'broccoli']:
+                            raise InvalidToppings("Invalid Topping selected! ")
+                        else:
+                              tops.append(topping)
+                              break
+                   except InvalidToppings as e:
+                        print("Enter properly: ", e)                
+            ncheese = int(input("Enter the nos of cheese u want to add? "))
    
-#             for k in range(ncheese):
-#                while True:
-#                    try :
-#                         ch = input(f"Enter the [{k+1}]cheese for pizza {i+1}: ")
-#                         if ch not in ["mozzarella", "feta", "cheddar"]:
-#                             raise InvalidToppings("Invalid cheese selected! ")
+            for k in range(ncheese):
+               while True:
+                   try :
+                        ch = input(f"Enter the [{k+1}]cheese for pizza {i+1}: ")
+                        if ch not in ["mozzarella", "feta", "cheddar"]:
+                            raise InvalidCheese("Invalid cheese selected! ")
                         
-#                         else:
-#                               cheese.append(ch)
-#                               break
+                        else:
+                              cheese.append(ch)
+                              break
                         
-#                    except InvalidToppings as e:
-#                         print("Enter properly: ", e)
+                   except InvalidCheese as e:
+                        print("Enter properly: ", e)
 
 
-#             self.pizzas.append(Pizza(size, tops,cheese))
+            self.pizzas.append(Pizza(size, tops,cheese))
+        self.bill()
+    def bill(self):
+        self.total = 0
+        count = 1
+        for p in self.pizzas:
+            print("Pizza : ", count)
+            print("Size = ", p.size ," Toppings: ", p.toppings, " Cheese: ",p.cheese)
+            self.total += p.price()
+            count +=1
+        print("Total bill Amount: ", self.total)
+order1 = Order('Sarinah')
+order1.order()
 
-#     def bill(self):
-#         self.total = 0
-#         count = 1
-#         for p in self.pizzas:
-#             print("Pizza : ", count)
-#             print("Size = ", p.size ," Toppings: ", p.toppings, " Cheese: ",p.cheese)
-#             self.total += p.price()
-#             count +=1
-#         print("Total bill Amount: ", self.total)
-# order1 = Order('Sarinah')
-# order1.order()
-# order1.bill()
                 
                       
 
@@ -167,7 +168,7 @@
 #     def __init__(self):
 #         self.products = {}
 #         self.add_product()
-#         self.bill()
+        
 #     def add_product(self):
 #         n = int(input("How many products u want to add? "))
 #         for i in range(n):
@@ -175,6 +176,7 @@
 #             cost = int(input("Enter the cost of the item: "))
 #             self.products[prodname] = cost
 #         print("The addded items are: ", self.products)
+#         self.bill()
 #     def bill(self):
 #         self.bill = 0
 #         print("Enter the quantity of each product: ")
